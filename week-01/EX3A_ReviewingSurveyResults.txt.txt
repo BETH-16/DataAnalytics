@@ -1,0 +1,42 @@
+1. What conclusion can you reach about the responses to this question?
+
+   Q1. half of the respondents seemed like are ready  
+   Q2. The responses are evenly split
+   Q3. the responses shows a balanced distribution
+   Q4. most respondent prefer using pen and paper with other small respondents using computer  
+   Q5. most of the respondents have question 
+
+2. Is the default summary or visualization helpful? How could it be improved?
+ 
+  responses were mixed and the visualization was helpful, it would be better if it could be more detailed and clear.
+
+3. For questions with an “Other” option, where can you find the actual text of those
+responses? Do you notice anything that might be tricky about analyzing these?
+  it is in the pie chart its color coded when we hover over it shows the percent too
+
+4. For questions calling for a written response, what challenges do you notice about
+finding trends or patterns in the answers provided?
+it is hard to analyze responses that are based on words numbers are more easy 
+
+5. Now that you can see the responses, how might you recommend rephrasing this or
+question or the response options in a future survey?
+i would change using a number for Q1 putting the phrases and making them like if u feel ready doing so and so type 5 or 4 so the responses are numerical 
+
+6. Is there anything that surprised you about the survey responses?
+   i didn't find anything surprising 
+
+7. Looking at the responses to questions 1 and 5, are there any ideas you might try to
+include in your morning routine, or any questions that you are also curious about?
+  how many days do u fell ready before a meeting out of 5 days a week 
+
+8. Pretend you are the instructor. Is there anything you can learn from this survey to help
+in how you approach teaching this class?
+i see half of the class doesn't have second screen ill try my best to compromise on both sides 
+
+
+9. Again, pretend you are the instructor. Do you think it was helpful or not helpful to
+make this survey anonymous? Why or why not? (If you can see both pros and cons,
+you may include both.)
+
+pros is help to analyze the general class responses u can see how the class is in the whole and help u not to be bias
+cons i don't see the cons   
