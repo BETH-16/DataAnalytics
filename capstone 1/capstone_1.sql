@@ -1,6 +1,6 @@
 use sample_sales;
 select * from sample_sales.management;
---- 1. What is total revenue overall for sales in the assigned territory, plus the start date and end datethat tell you what period the data covers?
+--- 4a. What is total revenue overall for sales in the assigned territory, plus the start date and end datethat tell you what period the data covers?
 select
 SUM(Sale_Amount) as total_revenue,
 MIN(Transaction_Date) as start_date,
@@ -18,14 +18,54 @@ SELECT
     MIN(Transaction_Date) AS start_date,
     MAX(Transaction_Date) AS end_date
 FROM store_sales;
--- 2. What is the month by month revenue breakdown for the sales territory?
-select 
-month,
-sum(sale_amount) as monthly_revenue  
-from (
-select 
-transaction date 
-sale_amount,
+-- 4b. What is the month by month revenue breakdown for the sales territory?
+describe store_locations;
+SELECT StoreId, State, StoreLocation
+FROM Store_Locations;
+ SELECT  
+    YEAR(Transaction_Date) AS year,
+    MONTH(Transaction_Date) AS month_number,
+    SUM(Sale_Amount) AS monthly_revenue
+FROM store_sales
+WHERE Store_ID BETWEEN 840 AND 851
+GROUP BY YEAR(Transaction_Date), MONTH(Transaction_Date)
+ORDER BY year, month_number;
+-- 4c. Provide a comparison of total revenue for the specific sales territory and the region it belongs to.
+ SELECT 
+    'Territory (840–851)' AS level,
+    SUM(Sale_Amount) AS total_revenue
+FROM store_sales
+WHERE Store_ID BETWEEN 840 AND 851
 
- 
- 
+UNION ALL
+
+SELECT 
+    'Full New York Region' AS level,
+    SUM(s.Sale_Amount) AS total_revenue
+FROM store_sales s
+JOIN store_locations l
+    ON s.Store_ID = l.StoreId
+WHERE l.State = 'New York';
+-- 4d. What is the number of transactions per month and average transaction size by product category for the sales territory
+select 
+       year(transaction_date) as year,
+       month(transaction_date) as month,
+       prod_num as product_category,
+       count(*) as transaction,
+       avg(sale_amount) as avg_transaction_size
+from store_sales
+where store_id between 840 and 851
+group by year, month, prod_num
+order by year, month;
+ -- 4e.provide a ranking of in-store sales performance by each store in the sales territory, or a ranking of online sales performance by state within an online sales territory
+ select 
+    store_id, 
+    sum(sale_amount) as total_revenue
+from store_sales
+where store_id between 840 and 851
+group by Store_ID
+order by total_revenue desc;
+-- 4f . What is your recommendation for where to focus sales attention in the next quarter?
+-- Based on my analysis of the New York territory (Store_ID 840–851), the highest performing stores are 850 and 847, while the lowest revenue comes from 851 and 844. I recommend focusing more attention on improving the lower-performing stores by checking issues like sales activity, customer flow, or inventory.
+ -- Also, products 105248-IT and 105250-IT show the highest transaction values, so these should be promoted more and kept well stocked.
+-- Overall, the next quarter should focus on boosting weaker stores while maximizing sales from top products and high-performing locations.
