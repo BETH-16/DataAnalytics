@@ -6,22 +6,13 @@ SUM(Sale_Amount) as total_revenue,
 MIN(Transaction_Date) as start_date,
 MAX(Transaction_Date) as end_date
 from store_sales 
-where store_ID= '1';
+where store_ID between 840 and 851;
 describe store_sales;
-WITH territory_sales AS (
-    SELECT *
-    FROM store_sales
-    WHERE Store_ID = 1
-)
-SELECT 
-    SUM(Sale_Amount) AS total_revenue,
-    MIN(Transaction_Date) AS start_date,
-    MAX(Transaction_Date) AS end_date
-FROM store_sales;
 -- 4b. What is the month by month revenue breakdown for the sales territory?
 describe store_locations;
 SELECT StoreId, State, StoreLocation
 FROM Store_Locations;
+ -- this 2 querries above are not part of this specific question they are me troubleshooting in the middle
  SELECT  
     YEAR(Transaction_Date) AS year,
     MONTH(Transaction_Date) AS month_number,
@@ -47,16 +38,24 @@ JOIN store_locations l
     ON s.Store_ID = l.StoreId
 WHERE l.State = 'New York';
 -- 4d. What is the number of transactions per month and average transaction size by product category for the sales territory
+-- transaction per month
 select 
-       year(transaction_date) as year,
-       month(transaction_date) as month,
-       prod_num as product_category,
+	   Date_FORMAT(transaction_date, '%Y-%m') AS month,
        count(*) as transaction,
        avg(sale_amount) as avg_transaction_size
 from store_sales
 where store_id between 840 and 851
-group by year, month, prod_num
-order by year, month;
+group by
+ DATE_FORMAT(transaction_date, '%Y-%m')
+order by  month; 
+-- avg transaction size by product category
+SELECT 
+    prod_num AS product_category,
+    AVG(sale_amount) AS avg_transaction_size
+FROM store_sales
+WHERE store_id BETWEEN 840 AND 851
+GROUP BY prod_num
+ORDER BY avg_transaction_size DESC;
  -- 4e.provide a ranking of in-store sales performance by each store in the sales territory, or a ranking of online sales performance by state within an online sales territory
  select 
     store_id, 
