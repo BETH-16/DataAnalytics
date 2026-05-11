@@ -1,0 +1,202 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "4178be04-5c82-451a-9df4-e02bdc821293",
+   "metadata": {},
+   "source": [
+    "# Exercise 2.A Using built-in functions"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "738c7424-218d-4374-8105-4166c09b17b6",
+   "metadata": {},
+   "source": [
+    "## Lab 1. Working with names – parsing strings"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "2f5ada27-45db-472f-86a2-020e0346c017",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "test_name = 'John Doe'"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "8b8a388a-c86b-48ee-bc3c-c56891f9cd09",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Full name: John Doe\n",
+      "First name: John\n",
+      "Last name: Doe\n"
+     ]
+    }
+   ],
+   "source": [
+    "def parse_and_display(name):\n",
+    "    for i in range(len(name)):\n",
+    "        if name[i] == ' ':\n",
+    "            first = name[:i]\n",
+    "            last = name[i+1:]\n",
+    "            break\n",
+    "\n",
+    "    print(f\"Full name: {name}\")\n",
+    "    print(f\"First name: {first}\")\n",
+    "    print(f\"Last name: {last}\")\n",
+    "\n",
+    "test_name = \"John Doe\"\n",
+    "parse_and_display(test_name)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "9b74d30c-86a3-4796-8be5-e6c09c621b45",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "test_list = ['Grace Flores', 'JB Oinonen', 'Ken Penn']"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "6bc211f0-9ba6-45e2-8c3b-36f5b063b904",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Full name: Grace Flores\n",
+      "First name: Grace\n",
+      "Last name: Flores\n"
+     ]
+    }
+   ],
+   "source": [
+    "parse_and_display(test_list[0])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "931762fe-08fa-4e5c-a9f3-222edf0f2736",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Full name: Betelehem Teklemariam\n",
+      "First name: Betelehem\n",
+      "Last name: Teklemariam\n"
+     ]
+    }
+   ],
+   "source": [
+    "parse_and_display('Betelehem Teklemariam')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "f1d8f58b-2ea9-4619-8e7e-c139585f3804",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Full name: Lorde\n",
+      "First name: Lorde\n",
+      "Middle name: None\n",
+      "Last name: None\n",
+      "\n",
+      "\n",
+      "Full name: Billie Eilish\n",
+      "First name: Billie\n",
+      "Middle name: None\n",
+      "Last name: Eilish\n",
+      "\n",
+      "\n",
+      "Full name: Megan Thee Stallion\n",
+      "First name: Megan\n",
+      "Middle name: Thee\n",
+      "Last name: Stallion\n"
+     ]
+    }
+   ],
+   "source": [
+    "\n",
+    "def parse_and_display2(name):\n",
+    "    parts = name.split()\n",
+    "\n",
+    "    print(f\"Full name: {name}\")\n",
+    "\n",
+    "    if len(parts) == 1:\n",
+    "        print(f\"First name: {parts[0]}\")\n",
+    "        print(\"Middle name: None\")\n",
+    "        print(\"Last name: None\")\n",
+    "\n",
+    "    elif len(parts) == 2:\n",
+    "        print(f\"First name: {parts[0]}\")\n",
+    "        print(\"Middle name: None\")\n",
+    "        print(f\"Last name: {parts[1]}\")\n",
+    "\n",
+    "    elif len(parts) == 3:\n",
+    "        print(f\"First name: {parts[0]}\")\n",
+    "        print(f\"Middle name: {parts[1]}\")\n",
+    "        print(f\"Last name: {parts[2]}\")\n",
+    "\n",
+    "    else:\n",
+    "        print(\"Name has more than 3 words\")\n",
+    "        # Tests\n",
+    "parse_and_display2(\"Lorde\")\n",
+    "print(\"\\n\")\n",
+    "parse_and_display2(\"Billie Eilish\")\n",
+    "print(\"\\n\")\n",
+    "parse_and_display2(\"Megan Thee Stallion\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "ec9db20e-d185-4c19-901f-550a946b9e47",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python [conda env:base] *",
+   "language": "python",
+   "name": "conda-base-py"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.9"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
