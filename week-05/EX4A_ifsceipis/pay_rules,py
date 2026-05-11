@@ -1,0 +1,36 @@
+# Variables
+# ─────────────────────────────────────────────
+pay_rate = 17.30
+hours_worked = 45
+
+# ─────────────────────────────────────────────
+# Calculate gross pay
+# ─────────────────────────────────────────────
+if hours_worked > 40:
+    regular_pay = pay_rate * 40
+    overtime_hours = hours_worked - 40
+    overtime_pay = overtime_hours * (pay_rate * 1.5)
+    gross_pay = regular_pay + overtime_pay
+    print(f"Regular hours: 40 x ${pay_rate} = ${regular_pay:.2f}")
+    print(f"Overtime hours: {overtime_hours} x ${pay_rate * 1.5:.2f} = ${overtime_pay:.2f}")
+else:
+    gross_pay = pay_rate * hours_worked
+    print(f"Hours worked: {hours_worked} x ${pay_rate} = ${gross_pay:.2f}")
+
+print(f"Gross Pay: ${gross_pay:.2f}")
+# Gregorian calendar leap year rules:
+# 1. Divisible by 4 → leap year
+# 2. EXCEPT if divisible by 100 → NOT a leap year
+# 3. UNLESS also divisible by 400 → IS a leap year
+# ─────────────────────────────────────────────
+
+year = 2000
+
+if year % 400 == 0:
+    print(f"{year} is a leap year (divisible by 400)")
+elif year % 100 == 0:
+    print(f"{year} is NOT a leap year (divisible by 100 but not 400)")
+elif year % 4 == 0:
+    print(f"{year} is a leap year (divisible by 4)")
+else:
+    print(f"{year} is NOT a leap year")
