@@ -1,0 +1,75 @@
+NORTHWIND DATABASE REVIEW
+=========================
+
+TABLE: Categories
+- Primary Key: Category ID
+- Columns: Category ID, Category Name, Description, Picture
+- Keep: Category ID (PK), Category Name
+- Remove: Description, Picture
+- Notes: Category Name is the main descriptor we need for reports
+
+TABLE: Customers
+- Primary Key: Customer ID
+- Columns: Customer ID, Company Name, Contact Name, Contact Title, Address, City, Region, Postal Code, Country, Phone, Fax
+- Keep: Customer ID (PK), Company Name, Contact Name, Contact Title, City, Region, Postal Code, Country
+- Remove: Address, Phone, Fax
+- Notes: Company Name is the customer identifier for reports
+
+TABLE: Employees
+- Primary Key: Employee ID
+- Columns: Employee ID, Last Name, FirstName, Title, Title Of Courtesy, Birth  Date, Hire Date, Address, City, Region, Postal Code, Country, Home Phone, Extension, Photo, Notes, Reports To, Photo Path, Salary
+- Keep: Employee ID (PK), Last Name, FirstName, Title, Title Of Courtesy, Birth Date, Hire Date, City, Region, Postal Code, Country, Reports To, Salary
+- Remove: Address, Home Phone, Extension, Photo, Notes, Photo Path
+- Notes: Reports To is a foreign key pointing to Employee ID
+
+TABLE: Orders- Primary Key: Order
+ID
+- Columns: Order ID, Customer ID, Employee ID, Order Date, Required Date, Shipped Date, Ship Via, Freight, Ship Name, Ship Address, Ship City, Ship Region, Ship Postal Code, Ship Country
+- Keep: Order id (PK), Customer ID (FK), Employee ID (FK), Order Date, Required Date, ShippedDate, ShipVia (FK), Freight, ShipName, ShipCity, Ship Region, ShipPostalCode, ShipCountry
+- Remove: ShipAddress
+- Notes: ShipVia is a foreign key pointing to Shippers table
+
+TABLE: Order Details
+- Primary Key: OrderID + ProductID (composite)
+- Columns: OrderID, ProductID, UnitPrice, Quantity, Discount
+- Keep: All columns
+- Notes: This is the main fact table — contains all sales transaction data
+
+TABLE: Products
+- Primary Key: ProductID
+- Columns: ProductID, ProductName, SupplierID, CategoryID, QuantityPerUnit, UnitPrice, UnitsInStock, UnitsOnOrder, ReorderLevel, Discontinued
+- Keep: ProductID (PK), ProductName, SupplierID (FK), CategoryID (FK), UnitPrice, UnitsInStock, UnitsOnOrder, ReorderLevel, Discontinued
+- Remove: QuantityPerUnit
+- Notes: CategoryID and SupplierID are foreign keys
+
+TABLE: Suppliers
+- Primary Key: SupplierID
+- Columns: SupplierID, CompanyName, Contact Name, Contact Title, Address, City, Region, PostalCode, Country, Phone, Fax, HomePage
+- Keep: SupplierID (PK), Company Name, Contact Name, Contact Title, City, Region, PostalCode, Country
+- Remove: Address, Phone, Fax, HomePage
+- Notes: CompanyName is the main supplier identifier
+
+TABLE: Shippers
+- Primary Key: ShipperID
+- Columns: ShipperID, CompanyName, Phone
+- Keep: ShipperID (PK), CompanyName
+- Remove: Phone
+- Notes: CompanyName identifies the shipping company
+
+TABLE: Region
+- Primary Key: RegionID
+- Columns: RegionID, RegionDescription
+- Keep: RegionID (PK), RegionDescription
+- Notes: Small lookup table with 4 regions
+
+TABLE: Territories
+- Primary Key: TerritoryID
+- Columns: TerritoryID, TerritoryDescription, RegionID
+- Keep: All columns
+- Notes: RegionID is a foreign key pointing to Region table
+
+TABLE: EmployeeTerritories
+- Primary Key: EmployeeID + TerritoryID (composite)
+- Columns: EmployeeID, TerritoryID
+- Keep: All columns
+- Notes: Junction table linking Employees to Territories
